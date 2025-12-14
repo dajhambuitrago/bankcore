@@ -1,11 +1,12 @@
-com\dajham\bankcore\application\dto\CreateAccountRequest.class
-com\dajham\bankcore\infrastructure\persistence\repository\SpringDataAccountRepository.class
 com\dajham\bankcore\BankCoreApplication.class
 com\dajham\bankcore\infrastructure\persistence\mapper\AccountMapper.class
 com\dajham\bankcore\infrastructure\persistence\entity\AccountEntity.class
 com\dajham\bankcore\domain\port\AccountRepositoryPort.class
+com\dajham\bankcore\infrastructure\config\SecurityConfig.class
+com\dajham\bankcore\web\controller\AccountController.class
+com\dajham\bankcore\application\dto\CreateAccountRequest.class
+com\dajham\bankcore\infrastructure\persistence\repository\SpringDataAccountRepository.class
 com\dajham\bankcore\application\service\AccountService.class
 com\dajham\bankcore\application\dto\AccountResponse.class
 com\dajham\bankcore\infrastructure\persistence\repository\AccountRepositoryAdapter.class
-com\dajham\bankcore\web\controller\AccountController.class
 com\dajham\bankcore\domain\model\Account.class
