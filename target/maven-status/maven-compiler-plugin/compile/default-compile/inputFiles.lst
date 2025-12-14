@@ -1,0 +1,11 @@
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\application\dto\AccountResponse.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\application\dto\CreateAccountRequest.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\application\service\AccountService.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\BankCoreApplication.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\domain\model\Account.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\domain\port\AccountRepositoryPort.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\infrastructure\persistence\entity\AccountEntity.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\infrastructure\persistence\mapper\AccountMapper.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\infrastructure\persistence\repository\AccountRepositoryAdapter.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\infrastructure\persistence\repository\SpringDataAccountRepository.java
+C:\Users\dajha\Documents\GIT\bankore\src\main\java\com\dajham\bankcore\web\controller\AccountController.java
