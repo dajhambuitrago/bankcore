@@ -19,6 +19,10 @@ public class AccountEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Version
+    @Column(name = "version", nullable = false)
+    private Long version;
+
     @Column(name = "account_number", nullable = false, unique = true, length = 20)
     private String accountNumber;
 
@@ -64,6 +68,14 @@ public class AccountEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getVersion() {
+        return version;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     public String getAccountNumber() {

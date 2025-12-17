@@ -30,6 +30,7 @@ public class AccountMapper {
         account.setAccountNumber(entity.getAccountNumber());
         account.setBalance(entity.getBalance());
         account.setUserId(entity.getUserId());
+        account.setVersion(entity.getVersion());
 
         return account;
     }
@@ -50,6 +51,7 @@ public class AccountMapper {
         entity.setAccountNumber(domain.getAccountNumber());
         entity.setBalance(domain.getBalance());
         entity.setUserId(domain.getUserId());
+        entity.setVersion(domain.getVersion());
 
         return entity;
     }

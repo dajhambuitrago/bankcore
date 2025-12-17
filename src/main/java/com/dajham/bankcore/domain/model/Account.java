@@ -15,6 +15,11 @@ public class Account {
     private String accountNumber;
     private BigDecimal balance;
     private Long userId;
+    /**
+     * Campo de control de concurrencia optimista.
+     * Se mapea desde la capa de persistencia para evitar sobrescrituras.
+     */
+    private Long version;
 
     /**
      * Constructor vacío para frameworks de persistencia y deserialización.
@@ -57,6 +62,10 @@ public class Account {
         return userId;
     }
 
+    public Long getVersion() {
+        return version;
+    }
+
     // Setters
     public void setId(Long id) {
         this.id = id;
@@ -72,6 +81,10 @@ public class Account {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     // Métodos de negocio (Domain Logic)
