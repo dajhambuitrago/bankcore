@@ -20,6 +20,31 @@ services:
       timeout: 5s
       retries: 5
 
+  app-bankcore:
+    build: .
+    container_name: bankcore-app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://bankcore-postgres:5432/bank_db
+      SPRING_DATASOURCE_USERNAME: bankcore_user
+      SPRING_DATASOURCE_PASSWORD: bankcore_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "false"
+      JAVA_OPTS: "-Xms256m -Xmx512m"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - bankcore-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
 volumes:
   postgres_data:
     driver: local
