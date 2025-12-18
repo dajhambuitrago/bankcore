@@ -2,6 +2,8 @@ package com.dajham.bankcore.infrastructure.persistence.repository;
 
 import com.dajham.bankcore.infrastructure.persistence.entity.AccountEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
@@ -13,12 +15,13 @@ import java.util.Optional;
 public interface SpringDataAccountRepository extends JpaRepository<AccountEntity, Long> {
 
     /**
-     * Busca una cuenta por su número de cuenta.
+     * Busca una cuenta por su número de cuenta (case-insensitive).
      * 
      * @param accountNumber El número de cuenta
      * @return Un Optional conteniendo la cuenta si existe
      */
-    Optional<AccountEntity> findByAccountNumber(String accountNumber);
+    @Query("SELECT a FROM AccountEntity a WHERE UPPER(a.accountNumber) = UPPER(:accountNumber)")
+    Optional<AccountEntity> findByAccountNumber(@Param("accountNumber") String accountNumber);
 
     /**
      * Verifica si existe una cuenta con el número dado.
@@ -27,4 +30,12 @@ public interface SpringDataAccountRepository extends JpaRepository<AccountEntity
      * @return true si existe, false en caso contrario
      */
     boolean existsByAccountNumber(String accountNumber);
+
+    /**
+     * Busca todas las cuentas de un usuario.
+     * 
+     * @param userId El ID del usuario
+     * @return Lista de cuentas del usuario
+     */
+    java.util.List<AccountEntity> findByUserId(Long userId);
 }

@@ -76,6 +76,51 @@ public class AccountService {
     }
 
     /**
+     * Obtiene todas las cuentas de un usuario.
+     * 
+     * @param userId El ID del usuario
+     * @return Lista de cuentas del usuario
+     */
+    @Transactional(readOnly = true)
+    public java.util.List<AccountResponse> getAccountsByUserId(Long userId) {
+        return accountRepositoryPort.findByUserId(userId)
+                .stream()
+                .map(this::mapToResponse)
+                .toList();
+    }
+
+    /**
+     * Obtiene una cuenta por su número de cuenta.
+     * 
+     * @param accountNumber El número de cuenta
+     * @return Los datos de la cuenta
+     * @throws IllegalArgumentException si la cuenta no existe
+     */
+    @Transactional(readOnly = true)
+    public AccountResponse getAccountByNumber(String accountNumber) {
+        // Normalizar: trim y uppercase para evitar problemas de espacios y
+        // case-sensitivity
+        String normalized = accountNumber.trim().toUpperCase();
+        Account account = accountRepositoryPort.findByAccountNumber(normalized)
+                .orElseThrow(() -> new IllegalArgumentException("Cuenta no encontrada: " + accountNumber));
+        return mapToResponse(account);
+    }
+
+    /**
+     * Obtiene una cuenta por su ID.
+     * 
+     * @param accountId El ID de la cuenta
+     * @return Los datos de la cuenta
+     * @throws IllegalArgumentException si la cuenta no existe
+     */
+    @Transactional(readOnly = true)
+    public AccountResponse getAccountById(Long accountId) {
+        Account account = accountRepositoryPort.findById(accountId)
+                .orElseThrow(() -> new IllegalArgumentException("Cuenta no encontrada: " + accountId));
+        return mapToResponse(account);
+    }
+
+    /**
      * Mapea una entidad de dominio Account a un DTO AccountResponse.
      * 
      * @param account La entidad de dominio

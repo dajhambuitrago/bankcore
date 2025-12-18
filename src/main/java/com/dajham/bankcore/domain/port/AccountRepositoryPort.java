@@ -50,4 +50,12 @@ public interface AccountRepositoryPort {
      * @return true si existe, false en caso contrario
      */
     boolean existsByAccountNumber(String accountNumber);
+
+    /**
+     * Busca todas las cuentas de un usuario.
+     * 
+     * @param userId El ID del usuario
+     * @return Lista de cuentas del usuario
+     */
+    java.util.List<Account> findByUserId(Long userId);
 }

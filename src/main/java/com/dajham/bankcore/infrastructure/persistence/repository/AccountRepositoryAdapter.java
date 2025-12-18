@@ -60,4 +60,12 @@ public class AccountRepositoryAdapter implements AccountRepositoryPort {
     public boolean existsByAccountNumber(String accountNumber) {
         return jpaRepository.existsByAccountNumber(accountNumber);
     }
+
+    @Override
+    public java.util.List<Account> findByUserId(Long userId) {
+        return jpaRepository.findByUserId(userId)
+                .stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
 }
